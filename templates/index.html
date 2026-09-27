@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <main id="main_content">
+        <h2>Instructions</h2>
+        <ul>
+            <li>Move the orc by pressing w, a, s and d</li>
+            <li>Attack enemies by pressing space bar</li>
+            <li>Retrieve as much coins as you can by killing enemies, each coin adds 100 to your score</li>
+            <li>Enemies will sometimes drop hearts also which give you health</li>
+            <li>Enemies can move through objects so be mindful of this</li>
+            <li>HAVE FUN!</li>
+        </ul>
+        <a href="{{ url_for('game') }}">PLAY</a>
+    </main>
+{% endblock %}

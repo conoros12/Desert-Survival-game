@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Game</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='game.css') }}" />
+        <script src="{{ url_for('static', filename='index.js') }}" type="module">
+        </script>
+    </head>
+    <body>
+        <span>user id: {{ g.user }}</span>
+        <canvas width="512" height="320">
+        </canvas>
+        <a href="{{ url_for('index') }}">Home Page</a>
+        <a href="{{ url_for('leaderboard') }}">Leaderboard</a>
+    </body>
+</html>

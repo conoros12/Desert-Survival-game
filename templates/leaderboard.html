@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <header>
+    <nav>
+        <h1 class="Leaderboard_heading">Leaderboard</h1>
+        <a href="{{ url_for('index') }}" class="home_link">Home page</a>
+    </nav>
+    </header>
+    <main>
+        <table>
+            <tr>
+                <th>Rank</th>
+                <th>Player</th>
+                <th>High Score</th>
+            </tr>
+            {% for row in scores %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ row['user_id'] }}</td>
+                <td>{{ row['high_score'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        {% if g.user == 'admin' %}
+            <section id="admin_remove">
+                <h2 class="Leaderboard_heading">Remove User from Leaderboard</h2>
+                <form method="post" action="{{ url_for('remove_from_leaderboard') }}">
+                    <label for="user_id">Select User:</label>
+                    <select name="user_id" id="user_id">
+                        {% for user in users %}
+                            <option value="{{ user['user_id'] }}">{{ user['user_id'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Remove</button>
+                </form>
+            </section>
+        {% endif %}
+    </main>
+</body>
+</html>
